@@ -40,7 +40,7 @@ DEFAULT_SETTINGS = {
     "auto_open_readme": True,
     "readme_url": "https://github.com/BarukoTropical/snapbooster",
     "snapchat_login": "https://web.snapchat.com/",
-    "discord": "https://discord.com/invite/FKXR3TkQnt"
+    "discord": "https://discord.com/invite/baruko"
 }
 
 BASE_DIR = Path(__file__).parent.resolve()
