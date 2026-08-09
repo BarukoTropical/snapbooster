@@ -9,7 +9,7 @@
 ![Version](https://img.shields.io/badge/version-1.2.1-yellow?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-Windows-blue?style=flat-square)
 ![Python](https://img.shields.io/badge/python-3.x-blue?style=flat-square)
-![License](https://img.shields.io/badge/license-Open%20Source-green?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 </div>
 
@@ -128,6 +128,13 @@ Kalibriere erneut (Option 2). Snapchat Web kann sich nach Updates optisch versch
 
 - **Discord:** [discord.com/invite/FKXR3TkQnt](https://discord.com/invite/FKXR3TkQnt)
 - **GitHub:** [github.com/OhnoMain/SnapchatBoost](https://github.com/OhnoMain/SnapchatBoost)
+
+---
+
+## 📄 Lizenz
+
+Dieses Projekt steht unter der **[MIT-Lizenz](LICENSE)**.
+Du darfst es kostenlos nutzen, kopieren, verändern und weitergeben – solange der Copyright-Hinweis erhalten bleibt.
 
 ---
 
