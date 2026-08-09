@@ -1,6 +1,6 @@
 <div align="center">
 
-![SnapchatBooster Preview](Screenshot.png)
+<img src="https://raw.githubusercontent.com/BarukoTropical/snapbooster/main/snapscore_100k.png" width="120" />
 
 # SnapchatBooster
 
@@ -9,16 +9,15 @@
 ![Version](https://img.shields.io/badge/version-1.2.1-yellow?style=flat-square)
 ![Platform](https://img.shields.io/badge/platform-Windows-blue?style=flat-square)
 ![Python](https://img.shields.io/badge/python-3.x-blue?style=flat-square)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+![License](https://img.shields.io/badge/license-Open%20Source-green?style=flat-square)
 
 </div>
-
 
 ---
 
 ## 📸 Preview
 
-![SnapchatBooster Terminal Screenshot](Screenshot.png)
+![SnapchatBooster Terminal Screenshot](screenshot.png)
 
 ---
 
@@ -128,14 +127,7 @@ Kalibriere erneut (Option 2). Snapchat Web kann sich nach Updates optisch versch
 ## 🔗 Links
 
 - **Discord:** [discord.com/invite/FKXR3TkQnt](https://discord.com/invite/FKXR3TkQnt)
-- **GitHub:** [github.com/OhnoMain/SnapchatBoost](https://github.com/BarukoTropical/snapbooster)
-
----
-
-## 📄 Lizenz
-
-Dieses Projekt steht unter der **[MIT-Lizenz](LICENSE)**.
-Du darfst es kostenlos nutzen, kopieren, verändern und weitergeben – solange der Copyright-Hinweis erhalten bleibt.
+- **GitHub:** [github.com/BarukoTropical/snapbooster](https://github.com/BarukoTropical/snapbooster)
 
 ---
 
