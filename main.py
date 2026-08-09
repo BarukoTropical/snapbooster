@@ -195,7 +195,21 @@ def get_driver():
             options.add_argument("--log-level=3")
             options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
             options.add_experimental_option('useAutomationExtension', False)
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+            driver_path = Path(ChromeDriverManager().install())
+            if driver_path.is_dir():
+                driver_path = driver_path / 'chromedriver.exe'
+            elif driver_path.name.lower().endswith('third_party_notices.chromedriver'):
+                candidate = driver_path.parent / 'chromedriver.exe'
+                if candidate.exists():
+                    driver_path = candidate
+                else:
+                    driver_path = driver_path.parent / 'chromedriver-win32' / 'chromedriver.exe'
+
+            if not driver_path.exists():
+                raise FileNotFoundError(f"Chromedriver executable not found at: {driver_path}")
+
+            driver = webdriver.Chrome(service=Service(str(driver_path)), options=options)
             driver.maximize_window()
             driver.get("https://web.snapchat.com/")
             pretty_print("Browser geöffnet. Bitte logge dich ein.", SNAP_Y)
@@ -203,6 +217,8 @@ def get_driver():
             input(SNAP_ACC + "drücke ENTER in dieser Konsole, um das Menü aufzurufen...")
         except Exception as e:
             pretty_print(f"Fehler beim Starten von Chrome: {e}", SNAP_W)
+            pretty_print("Falls der Fehler mit Chromedriver zusammenhängt, lösche den WDM-Cache und starte erneut.", SNAP_W)
+            pretty_print("Cache-Ordner: %USERPROFILE%\\.wdm\\drivers", SNAP_W)
             input("Drücke ENTER zum Beenden...")
             sys.exit(1)
     return driver
