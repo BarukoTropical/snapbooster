@@ -1,0 +1,24 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python -c \"import webdriver_manager, inspect; from webdriver_manager\\.chrome import ChromeDriverManager; print\\('wdm', webdriver_manager\\.__version__\\); print\\(inspect\\.signature\\(ChromeDriverManager\\.__init__\\)\\); print\\('install', ChromeDriverManager\\(\\)\\.install\\(\\)\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd /d \"C:\\\\Users\\\\schmi\\\\Downloads\\\\SnapchatBooster\" ; python - <<'PY'\nfrom pathlib import Path\np = Path\\(r\"C:\\\\Users\\\\schmi\\\\\\.wdm\\\\drivers\\\\chromedriver\\\\win64\\\\151\\.0\\.7922\\.77\"\\)\nprint\\('exists', p\\.exists\\(\\)\\)\nif p\\.exists\\(\\):\n    for x in sorted\\(p\\.iterdir\\(\\)\\):\n        print\\(repr\\(x\\.name\\), 'file' if x\\.is_file\\(\\) else 'dir'\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python -c \"from pathlib import Path; p=Path\\(r'C:\\\\Users\\\\schmi\\\\\\\\\\.wdm\\\\\\\\drivers\\\\\\\\chromedriver\\\\\\\\win64\\\\\\\\151\\.0\\.7922\\.77\\\\\\\\chromedriver-win32'\\); print\\('dir exists', p\\.exists\\(\\)\\); \\[print\\(str\\(x\\.relative_to\\(p\\)\\)\\) for x in sorted\\(p\\.rglob\\('\\*'\\)\\)\\]\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^powershell -NoProfile -Command \"try \\{ \\$r = Invoke-WebRequest -Uri 'https://snap\\.studio-paradox\\.de/' -UseBasicParsing -TimeoutSec 10; Write-Output 'STATUS:' \\+ \\$r\\.StatusCode; Write-Output 'LENGTH:' \\+ \\$r\\.RawContentLength \\} catch \\{ Write-Output 'ERROR:' \\+ \\$_\\.Exception\\.Message \\}\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python -c \"import zipfile, pathlib; root=pathlib\\.Path\\('C:/Users/schmi/Downloads/SnapchatBooster'\\); z=zipfile\\.ZipFile\\(root/'SnapchatBooster_code\\.zip','w',compression=zipfile\\.ZIP_DEFLATED\\); \\[z\\.write\\(root/f, arcname=f\\) for f in \\['main\\.py','requirements\\.txt','install\\.bat','start\\.bat','readme\\.md','version\\.txt','index\\.html'\\] if \\(root/f\\)\\.exists\\(\\)\\]; z\\.close\\(\\); print\\('created', root/'SnapchatBooster_code\\.zip'\\)\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
