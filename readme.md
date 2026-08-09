@@ -126,7 +126,7 @@ Kalibriere erneut (Option 2). Snapchat Web kann sich nach Updates optisch versch
 
 ## 🔗 Links
 
-- **Discord:** [discord.com/invite/FKXR3TkQnt](https://discord.com/invite/FKXR3TkQnt)
+- **Discord:** [discord.com/invite/baruko](https://discord.com/invite/baruko)
 - **GitHub:** [github.com/BarukoTropical/snapbooster](https://github.com/BarukoTropical/snapbooster)
 
 ---
