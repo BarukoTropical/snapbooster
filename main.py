@@ -237,6 +237,7 @@ def virtual_click(d, x, y):
 
 def get_click(d, step_name):
     pretty_print(f"-> Bitte klicke im Browser-Fenster auf: {step_name}", SNAP_Y)
+    pretty_print("Drücke ESC, um die Kalibrierung abzubrechen.", SNAP_ACC)
     
     # Inject click tracker script
     d.execute_script("""
@@ -250,6 +251,8 @@ def get_click(d, step_name):
     """)
     
     while True:
+        if is_escape_pressed():
+            return None, None
         try:
             click = d.execute_script("return window.lastClick;")
             if click:
@@ -259,7 +262,7 @@ def get_click(d, step_name):
             pretty_print(f"Fehler beim Lesen der Klick-Koordinaten: {e}", SNAP_W)
             break
         time.sleep(0.1)
-    return 0, 0
+    return None, None
 
 # ----------------------------------------------------------------------
 # Bot Actions
@@ -307,21 +310,33 @@ def configure_positions(d, settings):
     pretty_print("Klicke nacheinander auf die gefragten Schaltflächen im Browser.", SNAP_W)
     try:
         x, y = get_click(d, "Kamera (Kamera-Button)")
+        if x is None:
+            pretty_print("Kalibrierung abgebrochen und zurück zum Hauptmenü.", SNAP_ACC)
+            return
         settings['positions']['switch_to_camera'] = [x, y]
         pretty_print(f"CAMERA positioniert bei: {[x, y]}", SNAP_ACC)
         time.sleep(0.5)
 
         x, y = get_click(d, "Senden (Send-To Button)")
+        if x is None:
+            pretty_print("Kalibrierung abgebrochen und zurück zum Hauptmenü.", SNAP_ACC)
+            return
         settings['positions']['send_to'] = [x, y]
         pretty_print(f"SEND TO positioniert bei: {[x, y]}", SNAP_ACC)
         time.sleep(0.5)
 
         x, y = get_click(d, "Shortcut auswählen (dein Verknüpfungsemoji)")
+        if x is None:
+            pretty_print("Kalibrierung abgebrochen und zurück zum Hauptmenü.", SNAP_ACC)
+            return
         settings['positions']['shortcut'] = [x, y]
         pretty_print(f"SHORTCUT positioniert bei: {[x, y]}", SNAP_ACC)
         time.sleep(0.5)
 
         x, y = get_click(d, "Alle auswählen (Select-All Checkbox)")
+        if x is None:
+            pretty_print("Kalibrierung abgebrochen und zurück zum Hauptmenü.", SNAP_ACC)
+            return
         settings['positions']['select_all'] = [x, y]
         pretty_print(f"SELECT ALL positioniert bei: {[x, y]}", SNAP_ACC)
         
@@ -401,7 +416,16 @@ def _row(text='', color=SNAP_Y):
         print('')
 
 def _bot():
-    print(SNAP_ACC + '  Verwende [1-6] + ENTER, ESC zum Stoppen beim Boost.' + Style.RESET_ALL)
+    print(SNAP_ACC + '  Verwende [1-6] + ENTER, ESC zum Stoppen/Beenden.' + Style.RESET_ALL)
+
+def is_escape_pressed():
+    return keyboard is not None and keyboard.is_pressed('esc')
+
+def abort_if_escape():
+    if is_escape_pressed():
+        pretty_print('ESC gedrückt. Beenden...', SNAP_ACC)
+        exit_screen()
+        sys.exit(0)
 
 # ----------------------------------------------------------------------
 # Main Program Loop
@@ -443,7 +467,14 @@ def main():
         _row()
         _bot()
 
+        if is_escape_pressed():
+            exit_screen()
+            break
+
         c = input(Fore.YELLOW + '  > ' + Style.RESET_ALL).strip()
+        if c == '\x1b':
+            exit_screen()
+            break
         if c == '1':
             d = get_driver()
             pretty_print('Starte Snap Boost. Drücke ESC zum Stoppen.', SNAP_Y)
