@@ -361,7 +361,7 @@ def exit_screen():
         "╔════════════════════════════════════════════════╗\n"
         "║           Vielen Dank für die Nutzung!         ║\n"
         "║  https://github.com/BarukoTropical/snapbooster ║\n"
-        "║      https://discord.com/invite/FKXR3TkQnt     ║\n"
+        "║      https://discord.com/invite/baruko         ║\n"
         "╚════════════════════════════════════════════════╝\n"
     )
     print(SNAP_Y + box + Style.RESET_ALL)
