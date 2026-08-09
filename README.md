@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/OhnoMain/SnapchatBoost/main/snapscore_100k.png" width="120" />
+<img src="https://raw.githubusercontent.com/BarukoTropical/snapbooster/main/snapscore_100k.png" width="120" />
 
 # SnapchatBooster
 
@@ -17,7 +17,7 @@
 
 ## 📸 Preview
 
-![SnapchatBooster Terminal Screenshot](screenshot.png)
+![SnapchatBooster Terminal Screenshot](Screenshot.png)
 
 ---
 
@@ -127,7 +127,7 @@ Kalibriere erneut (Option 2). Snapchat Web kann sich nach Updates optisch versch
 ## 🔗 Links
 
 - **Discord:** [discord.com/invite/FKXR3TkQnt](https://discord.com/invite/FKXR3TkQnt)
-- **GitHub:** [github.com/OhnoMain/SnapchatBoost](https://github.com/OhnoMain/SnapchatBoost)
+- **GitHub:** [github.com/OhnoMain/SnapchatBoost](https://github.com/BarukoTropical/snapbooster)
 
 ---
 
