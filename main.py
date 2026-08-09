@@ -40,17 +40,16 @@ DEFAULT_SETTINGS = {
     "auto_open_readme": True,
     "readme_url": "https://github.com/BarukoTropical/snapbooster",
     "snapchat_login": "https://web.snapchat.com/",
-    "discord": "https://discord.com/invite/baruko"
+    "discord": "https://discord.com/invite/FKXR3TkQnt"
 }
 
 BASE_DIR = Path(__file__).parent.resolve()
 SETTINGS_PATH = BASE_DIR / "settings.json"
 SNAP_IMAGE = BASE_DIR / "snapscore_100k.png"
 
-SNAP_Y  = Fore.YELLOW
+SNAP_Y = Fore.YELLOW
 SNAP_ACC = Fore.LIGHTYELLOW_EX
-SNAP_W  = Fore.WHITE
-SNAP_DIM = Fore.WHITE
+SNAP_W = Fore.WHITE
 
 VERSION = "1.2.1"
 VERSION_URL = "https://raw.githubusercontent.com/BarukoTropical/snapbooster/main/version.txt"
@@ -188,12 +187,15 @@ def get_driver():
         pretty_print("Starte gesteuertes Chrome-Fenster...", SNAP_ACC)
         try:
             from selenium.webdriver.chrome.options import Options
+            from selenium.webdriver.chrome.service import Service
+            from webdriver_manager.chrome import ChromeDriverManager
+
             options = Options()
             options.add_argument("--disable-blink-features=AutomationControlled")
             options.add_argument("--log-level=3")
             options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
             options.add_experimental_option('useAutomationExtension', False)
-            driver = webdriver.Chrome(options=options)
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             driver.maximize_window()
             driver.get("https://web.snapchat.com/")
             pretty_print("Browser geöffnet. Bitte logge dich ein.", SNAP_Y)
@@ -361,7 +363,7 @@ def exit_screen():
         "╔════════════════════════════════════════════════╗\n"
         "║           Vielen Dank für die Nutzung!         ║\n"
         "║  https://github.com/BarukoTropical/snapbooster ║\n"
-        "║      https://discord.com/invite/baruko         ║\n"
+        "║      https://discord.com/invite/FKXR3TkQnt     ║\n"
         "╚════════════════════════════════════════════════╝\n"
     )
     print(SNAP_Y + box + Style.RESET_ALL)
@@ -372,6 +374,18 @@ def exit_screen():
         except:
             pass
     time.sleep(3)
+
+# ----------------------------------------------------------------------
+# Menu Rendering Helpers
+# ----------------------------------------------------------------------
+def _row(text='', color=SNAP_Y):
+    if text:
+        print(color + text + Style.RESET_ALL)
+    else:
+        print('')
+
+def _bot():
+    print(SNAP_ACC + '  Verwende [1-6] + ENTER, ESC zum Stoppen beim Boost.' + Style.RESET_ALL)
 
 # ----------------------------------------------------------------------
 # Main Program Loop
@@ -396,13 +410,24 @@ def main():
 
         clear()
         print_banner()
-        pretty_print('1) Start Snap Boost', SNAP_Y)
-        pretty_print('2) Configure Snap Positions (Calibration)', SNAP_Y)
-        pretty_print('3) Settings', SNAP_W)
-        pretty_print('4) Help & Links', SNAP_W)
-        pretty_print('5) Discord', SNAP_Y)
-        pretty_print('6) Exit', SNAP_ACC)
-        c = input('> ').strip()
+        _row()
+        _row('M A I N   M E N U', SNAP_Y)
+        _row()
+        menu_items = [
+            ('1', 'Start Snap Boost',                SNAP_Y,  True),
+            ('2', 'Configure Snap Positions',        SNAP_Y,  True),
+            ('3', 'Settings',                        SNAP_W,  False),
+            ('4', 'Help',                            SNAP_W,  False),
+            ('5', 'Discord',                         SNAP_ACC, True),
+            ('6', 'Exit',                            SNAP_W,  False),
+        ]
+        for key, label, col, accent in menu_items:
+            prefix = '›' if accent else ' '
+            _row(f'  {prefix}  [{key}]   {label}', col)
+        _row()
+        _bot()
+
+        c = input(Fore.YELLOW + '  > ' + Style.RESET_ALL).strip()
         if c == '1':
             d = get_driver()
             pretty_print('Starte Snap Boost. Drücke ESC zum Stoppen.', SNAP_Y)
